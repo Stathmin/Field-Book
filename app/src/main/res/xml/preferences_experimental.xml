@@ -23,6 +23,14 @@
 
         <CheckBoxPreference
             android:defaultValue="false"
+            android:icon="@drawable/ic_refresh"
+            android:key="com.fieldbook.tracker.ALLOW_ROTATION"
+            android:summary="@string/pref_experimental_allow_rotation_summary"
+            android:title="@string/pref_experimental_allow_rotation_title"
+            app:allowDividerBelow="true" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
             android:icon="@drawable/ic_tb_field_mic_on"
             android:key="com.tracker.fieldbook.preferences.keys.enable_field_audio"
             android:summary="@string/pref_experimental_enable_field_audio_summary"

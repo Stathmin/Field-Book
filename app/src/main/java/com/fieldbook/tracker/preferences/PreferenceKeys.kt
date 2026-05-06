@@ -140,9 +140,11 @@ class PreferenceKeys {
         const val EXPERIMENTAL_NEW_BRAPI_UI = "com.tracker.fieldbook.preferences.keys.enable_enhanced_brapi_import"
         const val GENERATE_SAMPLE_DATA = "com.tracker.fieldbook.preferences.keys.generate_sample_data"
         const val EXPERIMENTAL_TRAITS_CATEGORY = "com.tracker.fieldbook.preferences.keys.experimental_traits_category"
+        const val ALLOW_ROTATION = "com.fieldbook.tracker.ALLOW_ROTATION"
 
         private val experimentalPreferenceKeys = setOf(REPEATED_VALUES_PREFERENCE_KEY,
-            ENABLE_FIELD_AUDIO, EXPERIMENTAL_NEW_BRAPI_UI, EXPERIMENTAL_TRAITS_CATEGORY)
+            ENABLE_FIELD_AUDIO, EXPERIMENTAL_NEW_BRAPI_UI, EXPERIMENTAL_TRAITS_CATEGORY,
+            ALLOW_ROTATION)
 
         val SETTINGS_KEYS = profilePreferenceKeys + featurePreferenceKeys + appearancePreferenceKeys +
                 behaviorPreferenceKeys + locationPreferenceKeys + soundPreferenceKeys + brapiPreferenceKeys +

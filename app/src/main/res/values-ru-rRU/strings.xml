@@ -959,6 +959,10 @@
     <string name="pref_experimental_repeated_values_summary">Позволяет собирать несколько значений для каждой записи/признака</string>
     <string name="pref_experimental_repeated_values_disabled_title">Повторные измерения выключены</string>
     <string name="pref_experimental_repeated_values_disabled_message">Все собранные повторные значения будут скрыты, пока функция снова не будет включена</string>
+
+    <string name="pref_experimental_allow_rotation_title">Разрешить вращение</string>
+    <string name="pref_experimental_allow_rotation_summary">Если включено, Field Book может вращаться на устройствах с минимальной шириной ≥ 450dp</string>
+
     <string name="pref_experimental_enable_field_audio_title">Полевое аудио</string>
     <string name="pref_experimental_enable_field_audio_summary">Включить запись аудио для всего поля</string>
     <string name="menu_collect_start_field_audio">Начать запись</string>

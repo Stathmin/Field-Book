@@ -1145,6 +1145,9 @@
     <string name="pref_experimental_enable_field_audio_summary">Enable audio recording feature for the entire field</string>
     <string name="menu_collect_start_field_audio">Start Recorder</string>
     <string name="menu_collect_stop_field_audio">Stop Recorder</string>
+
+    <string name="pref_experimental_allow_rotation_title">Allow rotation</string>
+    <string name="pref_experimental_allow_rotation_summary">When enabled, Field Book can rotate on devices with smallest width ≥ 450dp</string>
     <string name="field_audio_recording_start">Recording field level audio</string>
     <string name="field_audio_recording_stop">A new field level audio file was saved</string>
     <string name="field_audio_recording_warning">Field level audio is already recording. Stop that first.</string>

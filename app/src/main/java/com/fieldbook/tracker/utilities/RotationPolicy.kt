@@ -2,37 +2,31 @@ package com.fieldbook.tracker.utilities
 
 import android.app.Activity
 import android.content.pm.ActivityInfo
-import android.content.res.Configuration
+import androidx.preference.PreferenceManager
+import com.fieldbook.tracker.preferences.PreferenceKeys
 
 /**
  * Centralized orientation policy used by a few screens.
  *
- * - Phones: keep portrait-locked
- * - Tablets: respect the user's auto-rotate setting
+ * Experimental toggle to allow app rotation on large screens.
  */
 object RotationPolicy {
     /**
-     * "Smallest width" is the most stable signal we have, but some large tablets with unusual
-     * density / resolution can report a lower swDp than expected. Use sw600dp (Android's common
-     * tablet breakpoint) and fall back to screenLayout size.
+     * Use smallestScreenWidthDp as a stable, resource-like breakpoint.
      */
-    const val TABLET_ROTATION_MIN_SW_DP = 600
+    const val ROTATION_MIN_SW_DP = 450
 
-    private fun isTablet(activity: Activity): Boolean {
-        val config = activity.resources.configuration
-        val swDp = config.smallestScreenWidthDp
-        if (swDp >= TABLET_ROTATION_MIN_SW_DP) return true
+    private fun shouldAllowRotation(activity: Activity): Boolean {
+        val prefs = PreferenceManager.getDefaultSharedPreferences(activity)
+        if (!prefs.getBoolean(PreferenceKeys.ALLOW_ROTATION, false)) return false
 
-        return when (config.screenLayout and Configuration.SCREENLAYOUT_SIZE_MASK) {
-            Configuration.SCREENLAYOUT_SIZE_LARGE,
-            Configuration.SCREENLAYOUT_SIZE_XLARGE -> true
-            else -> false
-        }
+        val swDp = activity.resources.configuration.smallestScreenWidthDp
+        return swDp >= ROTATION_MIN_SW_DP
     }
 
     fun apply(activity: Activity) {
         activity.requestedOrientation =
-            if (isTablet(activity)) {
+            if (shouldAllowRotation(activity)) {
                 ActivityInfo.SCREEN_ORIENTATION_USER
             } else {
                 ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
