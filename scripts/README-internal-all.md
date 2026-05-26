@@ -9,7 +9,8 @@
 3. `feature/hide-field-nav-arrows`
 4. `fix/brapi-auth-avoid-default-server-ping`
 5. `debug/trait-resourcefile-paths`
-6. `quick/build-local`
+6. `feature/soda-dark-theme`
+7. `quick/build-local`
 
 ## Setup (once per clone)
 

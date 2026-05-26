@@ -21,7 +21,7 @@ Options:
 Integration branches (after main):
   pr/tablet-rotation-sw800, feature/hide-field-nav-arrows,
   fix/brapi-auth-avoid-default-server-ping, debug/trait-resourcefile-paths,
-  quick/build-local
+  feature/soda-dark-theme, quick/build-local
 EOF
 }
 

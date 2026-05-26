@@ -9,6 +9,7 @@ INTERNAL_ALL_SOURCES=(
   feature/hide-field-nav-arrows
   fix/brapi-auth-avoid-default-server-ping
   debug/trait-resourcefile-paths
+  feature/soda-dark-theme
   quick/build-local
 )
 
