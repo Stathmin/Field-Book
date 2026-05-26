@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+ROOT="$(git rev-parse --show-toplevel)" || exit 0
+# $3=1 when switching branches
+BRANCH="$(git branch --show-current)"
+if [[ "$BRANCH" == "internal/all" && "${3:-}" == "1" ]]; then
+  if "$ROOT/scripts/sync-internal-all.sh" --check </dev/null 2>/dev/null; then
+    "$ROOT/scripts/on-source-branch-updated.sh" "checkout" </dev/null >/dev/null 2>&1 &
+  fi
+fi
+exit 0
