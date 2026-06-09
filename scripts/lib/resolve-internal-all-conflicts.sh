@@ -20,20 +20,22 @@ internal_all_resolve_conflicts_for_branch() {
 
 internal_all_resolve_preference_keys() {
   local file="app/src/main/java/com/fieldbook/tracker/preferences/PreferenceKeys.kt"
-  if [[ ! -f "$file" ]] || ! grep -q '<<<<<<<' "$file"; then
+  if [[ ! -f "$file" ]]; then
     return 0
   fi
   echo "internal/all: auto-resolving $file (keep ALLOW_ROTATION + ALLOW_HIDE_FIELD_NAV_ARROWS)"
-  git checkout --theirs -- "$file"
+  git checkout --theirs -- "$file" 2>/dev/null || true
+  git add -- "$file"
 }
 
 internal_all_resolve_themed_activity() {
   local file="app/src/main/java/com/fieldbook/tracker/activities/ThemedActivity.kt"
-  if [[ ! -f "$file" ]] || ! grep -q '<<<<<<<' "$file"; then
+  if [[ ! -f "$file" ]]; then
     return 0
   fi
   echo "internal/all: auto-resolving $file (AppThemeResolver + RotationPolicy)"
-  python3 - "$file" <<'PY'
+  if grep -q '<<<<<<<' "$file"; then
+    python3 - "$file" <<'PY'
 import re, sys
 path = sys.argv[1]
 text = open(path, encoding="utf-8").read()
@@ -49,6 +51,8 @@ text = re.sub(
 )
 open(path, "w", encoding="utf-8").write(text)
 PY
+  fi
+  git add -- "$file"
 }
 
 internal_all_finish_conflict_resolution() {
