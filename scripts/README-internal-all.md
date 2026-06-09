@@ -7,7 +7,7 @@
 1. `main` (reset base)
 2. `pr/tablet-rotation-sw800`
 3. `feature/hide-field-nav-arrows`
-4. `fix/brapi-auth-avoid-default-server-ping`
+4. `fix/brapi-oauth-fieldbook-redirect`
 5. `debug/trait-resourcefile-paths`
 6. `feature/soda-dark-theme`
 7. `quick/build-local`

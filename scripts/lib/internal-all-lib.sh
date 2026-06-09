@@ -7,7 +7,7 @@ INTERNAL_ALL_SOURCES=(
   main
   pr/tablet-rotation-sw800
   feature/hide-field-nav-arrows
-  fix/brapi-auth-avoid-default-server-ping
+  fix/brapi-oauth-fieldbook-redirect
   debug/trait-resourcefile-paths
   feature/soda-dark-theme
   quick/build-local
