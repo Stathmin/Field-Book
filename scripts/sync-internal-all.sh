@@ -5,6 +5,8 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # shellcheck source=scripts/lib/internal-all-lib.sh
 source "$SCRIPT_DIR/lib/internal-all-lib.sh"
+# shellcheck source=scripts/lib/resolve-internal-all-conflicts.sh
+source "$SCRIPT_DIR/lib/resolve-internal-all-conflicts.sh"
 
 usage() {
   cat <<'EOF'
@@ -106,9 +108,12 @@ merge_branch() {
     return 0
   fi
   echo "internal/all: merging $branch ($(git rev-parse --short "$branch"))"
-  if ! git merge "$branch" --no-edit -m "integrate: $branch"; then
-    echo "error: merge failed for $branch — resolve conflicts on $INTERNAL_ALL_BRANCH or fix the source branch" >&2
-    git merge --abort 2>/dev/null || true
+  if git merge "$branch" --no-edit -m "integrate: $branch"; then
+    return 0
+  fi
+  internal_all_resolve_conflicts_for_branch "$branch"
+  if ! internal_all_finish_conflict_resolution; then
+    echo "error: merge failed for $branch — unresolved conflicts on $INTERNAL_ALL_BRANCH" >&2
     exit 1
   fi
 }

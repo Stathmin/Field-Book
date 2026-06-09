@@ -39,3 +39,18 @@ scripts/assemble-debug-apk.sh
 APK: `app/build/outputs/apk/debug/app-debug.apk`
 
 Do not run `./gradlew assembleDebug` on other branches for integration builds; use the script.
+
+## Unit tests (any branch, no APK)
+
+```bash
+scripts/test-unit-fast.sh 'com.fieldbook.tracker.theme.ThreeStateToggleSodaDark*'
+```
+
+Uses Gradle daemon + build cache; does not run `assembleDebug`.
+
+## Known merge conflicts
+
+`sync-internal-all.sh` auto-resolves recurring conflicts:
+
+- `PreferenceKeys.kt` — `feature/hide-field-nav-arrows` keeps both `ALLOW_ROTATION` and `ALLOW_HIDE_FIELD_NAV_ARROWS`
+- `ThemedActivity.kt` — `feature/soda-dark-theme` keeps both `AppThemeResolver` and `RotationPolicy`
