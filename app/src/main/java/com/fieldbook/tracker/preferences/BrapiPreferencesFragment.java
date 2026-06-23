@@ -1,9 +1,11 @@
 package com.fieldbook.tracker.preferences;
 
+import com.fieldbook.tracker.utilities.ThemedAlertDialog;
+import com.fieldbook.tracker.utilities.AppThemeResolver;
 import static android.app.Activity.RESULT_OK;
 
 import android.app.Activity;
-import android.app.AlertDialog;
+import androidx.appcompat.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -120,7 +122,7 @@ public class BrapiPreferencesFragment extends PreferenceFragmentCompat implement
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
 
-        mBrapiHttpWarningDialog = new AlertDialog.Builder(context, R.style.AppAlertDialog)
+        mBrapiHttpWarningDialog = ThemedAlertDialog.builder(context)
                 .setTitle(R.string.act_brapi_auth_http_warning_title)
                 .setMessage(R.string.act_brapi_auth_http_warning_message)
                 .setPositiveButton(android.R.string.ok, (dialog, which) -> {
@@ -247,7 +249,7 @@ public class BrapiPreferencesFragment extends PreferenceFragmentCompat implement
         if (brapiConfigBarcode != null) {
             brapiConfigBarcode.setOnPreferenceClickListener(preference -> {
                 String title = getString(R.string.qr_code_share_choose_action_title);
-                new AlertDialog.Builder(getContext(), R.style.AppAlertDialog)
+                ThemedAlertDialog.builder(getContext())
                         .setTitle(title)
                         .setItems(new String[]{getString(R.string.preferences_brapi_barcode_config_scan), getString(R.string.preferences_brapi_barcode_config_share)}, (dialog, which) -> {
                             switch (which) {
@@ -279,7 +281,7 @@ public class BrapiPreferencesFragment extends PreferenceFragmentCompat implement
 
     private void barcodeAutoConfigure() {
         String title = getString(R.string.qr_code_share_choose_action_title);
-        new AlertDialog.Builder(getContext(), R.style.AppAlertDialog)
+        ThemedAlertDialog.builder(getContext())
             .setTitle(title)
             .setItems(new String[]{getString(R.string.preferences_brapi_barcode_config_scan), getString(R.string.preferences_brapi_barcode_config_share)}, (dialog, which) -> {
                 switch (which) {
@@ -417,7 +419,7 @@ public class BrapiPreferencesFragment extends PreferenceFragmentCompat implement
             imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
             imageView.setAdjustViewBounds(true);
 
-            new AlertDialog.Builder(act, R.style.AppAlertDialog)
+            ThemedAlertDialog.builder(act)
                     .setTitle(getString(R.string.preferences_brapi_barcode_config_dialog_title))
                     .setView(imageView)
                     .setPositiveButton(getString(R.string.dialog_close), null)
@@ -457,7 +459,7 @@ public class BrapiPreferencesFragment extends PreferenceFragmentCompat implement
     }
 
     private void showCommunityServerListDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(context, R.style.AppAlertDialog);
+        AlertDialog.Builder builder = ThemedAlertDialog.builder(context);
         builder.setTitle(R.string.preferences_brapi_servers_title);
 
         String[] serverNames = getResources().getStringArray(R.array.community_servers_names);
@@ -679,7 +681,7 @@ public class BrapiPreferencesFragment extends PreferenceFragmentCompat implement
         final boolean[] checkedOptions = new boolean[options.length];
 
         final List<String> selectedItems = Arrays.asList(options);
-        AlertDialog.Builder builder = new AlertDialog.Builder(context, R.style.AppAlertDialog);
+        AlertDialog.Builder builder = ThemedAlertDialog.builder(context);
         builder.setTitle(R.string.brapi_choice_to_make_default_dialog_title);
         builder.setMultiChoiceItems(options, checkedOptions, (dialog, which, isChecked) -> {
             checkedOptions[which] = isChecked;
@@ -841,7 +843,7 @@ public class BrapiPreferencesFragment extends PreferenceFragmentCompat implement
     }
 
     private void showErrorDialog(String message) {
-        new AlertDialog.Builder(this.getActivity(), R.style.AppAlertDialog)
+        ThemedAlertDialog.builder(this.getActivity())
                 .setTitle(R.string.preferences_brapi_server_scan_error)
                 .setMessage(message)
                 .setPositiveButton(android.R.string.ok, null)
