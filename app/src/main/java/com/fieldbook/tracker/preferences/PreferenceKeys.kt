@@ -25,7 +25,12 @@ class PreferenceKeys {
         const val HIDE_ENTRIES_WITH_DATA_TOOLBAR = "com.fieldbook.tracker.HIDE_ENTRIES_WITH_DATA_TOOLBAR"
         const val MOVE_TO_UNIQUE_ID = "com.fieldbook.tracker.MOVE_TO_UNIQUE_ID"
 
-        private val featurePreferenceKeys = setOf(TIPS, DATAGRID_SETTING, HIDE_ENTRIES_WITH_DATA_TOOLBAR, MOVE_TO_UNIQUE_ID)
+        private val featurePreferenceKeys = setOf(
+            TIPS,
+            DATAGRID_SETTING,
+            HIDE_ENTRIES_WITH_DATA_TOOLBAR,
+            MOVE_TO_UNIQUE_ID
+        )
 
         // APPEARANCE
         const val TOOLBAR_CUSTOMIZE = "TOOLBAR_CUSTOMIZE"
@@ -141,10 +146,11 @@ class PreferenceKeys {
         const val GENERATE_SAMPLE_DATA = "com.tracker.fieldbook.preferences.keys.generate_sample_data"
         const val EXPERIMENTAL_TRAITS_CATEGORY = "com.tracker.fieldbook.preferences.keys.experimental_traits_category"
         const val ALLOW_ROTATION = "com.fieldbook.tracker.ALLOW_ROTATION"
+        const val ALLOW_HIDE_FIELD_NAV_ARROWS = "com.fieldbook.tracker.ALLOW_HIDE_FIELD_NAV_ARROWS"
 
         private val experimentalPreferenceKeys = setOf(REPEATED_VALUES_PREFERENCE_KEY,
             ENABLE_FIELD_AUDIO, EXPERIMENTAL_NEW_BRAPI_UI, EXPERIMENTAL_TRAITS_CATEGORY,
-            ALLOW_ROTATION)
+            ALLOW_ROTATION, ALLOW_HIDE_FIELD_NAV_ARROWS)
 
         val SETTINGS_KEYS = profilePreferenceKeys + featurePreferenceKeys + appearancePreferenceKeys +
                 behaviorPreferenceKeys + locationPreferenceKeys + soundPreferenceKeys + brapiPreferenceKeys +
