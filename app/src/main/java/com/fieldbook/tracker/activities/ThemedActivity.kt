@@ -151,9 +151,4 @@ open class ThemedActivity: AppCompatActivity() {
         }
         super.startActivity(intent)
     }
-<<<<<<< HEAD
-
 }
-=======
-}
->>>>>>> feature/soda-dark-theme
